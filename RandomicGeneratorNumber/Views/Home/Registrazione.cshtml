@@ -1,0 +1,45 @@
+﻿<section id="registrazione">
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <form method="post" name="sentMessage" id="registrationForm" enctype="multipart/form-data" novalidate>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" placeholder="Nome" id="nome" required data-validation-required-message="Per favore inserisci il tuo nome.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Cognome</label>
+                        <input type="text" class="form-control" placeholder="Cognome" id="cognome" required data-validation-required-message="Per favore inserisci il tuo cognome.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12  form-group controls">
+                        <label>Foto</label>
+                        <input type="file" class="form-control" id="foto" name="photos[]" required data-validation-required-message="Per favore inserisci una tua foto."> <!-- se volessi caricare più file dovrei aggiungere la parola chiave multiple-->
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <button type="submit" id="send" class="btn btn-success btn-lg">Invia</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+
+@section scripts {
+    <!-- Registration Form JavaScript -->
+    <script src="~/Scripts/jqBootstrapValidation.js"></script>
+    <script src="~/Scripts/registrazione.js"></script>
+}
