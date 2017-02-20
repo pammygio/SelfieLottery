@@ -340,6 +340,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Registrazione.cshtml" />
     <Content Include="Views\Home\Estrazione.cshtml" />
+    <Content Include="Views\Shared\_LayoutSimple.cshtml" />
+    <Content Include="Views\Home\EstrazioneSimple.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

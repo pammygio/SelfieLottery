@@ -31,7 +31,7 @@ namespace EstrazionePremi.Controllers
             ViewBag.Title = "Estrazione";
             ViewBag.SubTitle = System.DateTime.Now.ToShortDateString();
 
-            return View();
+            return View("EstrazioneSimple");
         }
 
     }
