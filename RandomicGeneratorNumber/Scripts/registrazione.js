@@ -3,7 +3,7 @@ $(function() {
     var chat = $.connection.iscrizioneHub;
 
     // Create a function that the hub can call back to display messages.
-    chat.client.addNewMessageToPage = function (nome) {       
+    chat.client.addNewMessageOKToPage = function (nome) {       
         // comunicazione invio effettuato
         $('#success').html("<div class='alert alert-success'>");
         $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
