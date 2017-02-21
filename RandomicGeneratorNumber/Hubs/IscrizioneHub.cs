@@ -10,7 +10,7 @@ namespace RandomicGeneratorNumber
     {
         public void Send(string nome, string cognome, string nomeFile)
         {
-            Clients.Others.addNewMessageToPage(nome, cognome, nomeFile);
+            Clients.Caller.addNewMessageToPage(nome, cognome, nomeFile);
         }
     }
 }
