@@ -59,8 +59,6 @@ $(function() {
                 });                    
 
                 uuid = firstName.replace(/\W/g, '') + '_' + cognome.replace(/\W/g, '')
-               
-
                 
 
                 //invio l'immagine al server 

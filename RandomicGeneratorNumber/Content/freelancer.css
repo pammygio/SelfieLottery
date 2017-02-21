@@ -464,7 +464,7 @@ fieldset[disabled] .btn-success.active {
 .portfolio-modal .modal-content .item-details {
   margin: 30px 0;
 }
-.portfolio-modal .close-modal {
+/*.portfolio-modal .close-modal {
   position: absolute;
   width: 75px;
   height: 75px;
@@ -498,7 +498,7 @@ fieldset[disabled] .btn-success.active {
   -webkit-transform: rotate(90deg);
   /* Safari and Chrome */
   z-index: 1052;
-}
+}*/
 .portfolio-modal .modal-backdrop {
   opacity: 0;
   display: none;
