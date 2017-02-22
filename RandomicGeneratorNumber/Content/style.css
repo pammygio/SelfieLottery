@@ -1,0 +1,34 @@
+﻿
+#machine {
+    text-align: center;
+    /*background-color: #0F99CA;*/
+    height: 120px;
+	/*border-bottom: 10px solid #195AC8;
+	border-top: 10px solid #195AC8;*/
+}
+
+#machine .row > div {
+    background-color: #fff;
+    /*width: 225px;
+    height: 225px;*/
+    border-radius: 50%;
+    padding-top: 40px;
+    padding-left: 35px;
+    left: -35px;
+}
+
+/*#machine {
+    width: 150px;
+    height: 150px;
+}*/
+
+#machine .slot{
+	height:130px;
+	background-position-x: 55%;
+	background-repeat: no-repeat;
+}
+
+.btn-group-machine {
+    margin-top: 10px;
+}
+
