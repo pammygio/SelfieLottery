@@ -1,0 +1,97 @@
+﻿using Newtonsoft.Json;
+using SelfieLottery.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace SelfieLottery.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Registrazione()
+        {
+          
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registrazione(Registrazione model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            string day = DateTime.Now.ToString("yyyyMMdd");
+            string pathImages = Path.Combine(Server.MapPath("~/Images"), day);
+            DirectoryInfo dirInfo = new DirectoryInfo(pathImages);
+            if (!(dirInfo.Exists))
+            {
+                Directory.CreateDirectory(pathImages);
+            }
+            string filename = model.Foto.FileName.Replace(Path.GetFileNameWithoutExtension(model.Foto.FileName), model.Id);
+            string filePath = Path.Combine(pathImages, filename );
+
+            model.Foto.SaveAs(filePath);
+
+            string pathData = Path.Combine(Server.MapPath("~/App_Data"), day);
+            dirInfo = new DirectoryInfo(pathData);
+            if (!(dirInfo.Exists)) {
+                Directory.CreateDirectory(pathData);
+            }
+
+            DatiPartecipante dati = new DatiPartecipante();
+            dati.Id = model.Id;
+            dati.Nome = model.Nome;
+            dati.Cognome = model.Cognome;
+            dati.ImageUrl = string.Format("/images/{0}/{1}", day, filename);
+
+            string data = JsonConvert.SerializeObject(dati);
+
+            System.IO.File.WriteAllText(Path.Combine(pathData, model.Id + ".json"),data);
+
+            ViewBag.Ok = true;
+
+
+            return View();
+        }
+
+
+        public ActionResult Estrazione()
+        {
+           
+            List<DatiPartecipante> partecipanti = new List<DatiPartecipante>();
+            string day = DateTime.Now.ToString("yyyyMMdd");
+            string pathData = Path.Combine(Server.MapPath("~/App_Data"), day);
+            DirectoryInfo dirInfo = new DirectoryInfo(pathData);
+            if (dirInfo.Exists)
+            {
+                foreach (var item in dirInfo.GetFiles("*.json"))
+                {
+                    var dati = JsonConvert.DeserializeObject<DatiPartecipante>(System.IO.File.ReadAllText(item.FullName));
+                    if (dati != null)
+                    {
+                        partecipanti.Add(dati);
+                    }
+
+                }
+
+
+            }
+
+
+            return View(partecipanti);
+        }
+
+       
+    }
+}
