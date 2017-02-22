@@ -12,11 +12,18 @@ namespace SelfieLottery
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            
             routes.MapRoute(
-               name: "Registrazione",
-               url: "registrazione",
-               defaults: new { controller = "Home", action = "Registrazione", id = UrlParameter.Optional }
+               name: "ResetDayLottery",
+               url: "ResetDayLottery",
+               defaults: new { controller = "Home", action = "ResetDayLottery", id = UrlParameter.Optional }
            );
+            routes.MapRoute(
+              name: "Registrazione",
+              url: "registrazione",
+              defaults: new { controller = "Home", action = "Registrazione", id = UrlParameter.Optional }
+          );
 
             routes.MapRoute(
                name: "Estrazione",

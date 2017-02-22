@@ -24,6 +24,24 @@ namespace SelfieLottery.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ResetDayLottery()
+        {
+            string day = DateTime.Now.ToString("yyyyMMdd");
+            string pathData = Path.Combine(Server.MapPath("~/App_Data"), day);
+            DirectoryInfo dirInfo = new DirectoryInfo(pathData);
+            if (dirInfo.Exists)
+            {
+                foreach (var item in dirInfo.GetFiles("*.json"))
+                {
+                    System.IO.File.Delete(item.FullName);
+
+                }
+            }
+           return RedirectToAction("Index");
+            
+        }
+
         [HttpPost]
         public ActionResult Registrazione(Registrazione model)
         {
