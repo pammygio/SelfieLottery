@@ -1,4 +1,8 @@
-﻿<section id="registrazione">
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="registrazione">
 
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
@@ -41,5 +45,5 @@
 @section scripts {
     <!-- Registration Form JavaScript -->
     <script src="~/Scripts/jqBootstrapValidation.js"></script>
-    <script src="~/Scripts/registrazione.js"></script>
+    <script src="~/Scripts/registrazione.js?v=@ViewContext.Controller.GetType().Assembly.GetName().Version"></script>
 }

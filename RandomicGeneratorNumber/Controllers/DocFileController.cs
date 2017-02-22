@@ -20,18 +20,7 @@ namespace RandomicGeneratorNumber.Controllers
                 var docfiles = new List<string>();
                 foreach (string file in httpRequest.Files)
                 {
-                    //var postedFile = httpRequest.Files[file];
-                    //var fileDir = HttpContext.Current.Server.MapPath("~/img/" + DateTime.Now.ToString("yyyyMMdd"));
-                    //DirectoryInfo dir = new DirectoryInfo(fileDir);
-                    //if (!dir.Exists)
-                    //{
-                    //    dir.Create();
-                    //}
-                    //string fileName = string.Format("{0}_{1}", DateTime.Now.ToString("yyyyMMddHHmmss"), postedFile.FileName);
-                    //var filePath = fileDir + "/" + fileName;
-                    //postedFile.SaveAs(filePath);
                     var postedFile = httpRequest.Files[file];
-                    DirectoryInfo dir = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/img/"));
                     var filePath = HttpContext.Current.Server.MapPath("~/img/" + postedFile.FileName);
                     postedFile.SaveAs(filePath);
 
