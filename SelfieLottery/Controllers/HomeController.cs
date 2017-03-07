@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace SelfieLottery.Controllers
 {
@@ -56,10 +57,28 @@ namespace SelfieLottery.Controllers
             {
                 Directory.CreateDirectory(pathImages);
             }
-            string filename = model.Foto.FileName.Replace(Path.GetFileNameWithoutExtension(model.Foto.FileName), model.Id);
-            string filePath = Path.Combine(pathImages, filename );
+            string filename = "";
+            string filePath = "";
 
-            model.Foto.SaveAs(filePath);
+            if (model.Foto != null)
+            {
+                filename = model.Foto.FileName.Replace(Path.GetFileNameWithoutExtension(model.Foto.FileName), model.Id);
+                filePath = Path.Combine(pathImages, filename);
+                model.Foto.SaveAs(filePath);
+            }
+            else
+            {
+                int indiceParametro = model.Url.LastIndexOf("?");
+                filename = model.Url.Substring(0, indiceParametro).Replace("_", "");
+                int indiceNome = model.Url.LastIndexOf("/");
+                filename = filename.Substring(indiceNome + 1);
+                filePath = Path.Combine(pathImages, filename);
+
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(new Uri(model.Url), filePath);                    
+                }
+            }    
 
             string pathData = Path.Combine(Server.MapPath("~/App_Data"), day);
             dirInfo = new DirectoryInfo(pathData);
