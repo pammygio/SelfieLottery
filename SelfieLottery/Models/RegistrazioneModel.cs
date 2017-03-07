@@ -16,7 +16,8 @@ namespace SelfieLottery.Models
 
         public string Cognome { get; set; }
 
-        [Required]
         public HttpPostedFileBase Foto { get; set; }
+
+        public string Url { get; set; }
     }
 }
